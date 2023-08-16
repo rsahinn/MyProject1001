@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface ICategoryServices
+    public interface ICategoryService
     {
         void AddCategory(Category category);
         void DeleteCategory(Category category);

@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using DataAccess.Abstract;
 using DataAccess.EntityFramework;
 using DataAccess.Repository;
 using Entity.Concrete;
@@ -11,36 +12,41 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    public class CategoryManager : ICategoryServices
+    public class CategoryManager : ICategoryService
     {
-        EfCategoryRepository _efCategoryRepository;
-        public CategoryManager()
+        ICategoryDal _categoryDal;
+        public CategoryManager(ICategoryDal categoryDal)
         {
-            _efCategoryRepository = new EfCategoryRepository();
+            _categoryDal = categoryDal;
         }
         public void AddCategory(Category category)
         {
-            _efCategoryRepository.Add(category);
+            _categoryDal.Add(category);
         }
 
         public void DeleteCategory(Category category)
         {
-            _efCategoryRepository.Delete(category);
+            _categoryDal.Delete(category);
         }
 
         public List<Category> GetAllCategories()
         {
-            return _efCategoryRepository.GetAll();
+            return _categoryDal.GetAll();
         }
 
-        public Category GetById(int id)
+        public Category GetAllById(int id)
         {
-            return _efCategoryRepository.GetById(id);
+            return _categoryDal.GetById(id);
         }
 
         public void UpdateCategory(Category category)
         {
-            _efCategoryRepository.Update(category);
+            _categoryDal.Update(category);
+        }
+
+        public Category GetById(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
