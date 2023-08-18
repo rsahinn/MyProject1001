@@ -18,9 +18,9 @@ namespace Business.Concrete
             _commentdal = commentDal;
         }
 
-        public void AddComment(Comment category)
+        public void AddComment(Comment comment)
         {
-            throw new NotImplementedException();
+            _commentdal.Add(comment);
         }
 
         public List<Comment> GetAllComment(int id)
